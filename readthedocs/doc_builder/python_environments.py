@@ -6,6 +6,7 @@ import itertools
 import structlog
 import os
 import tarfile
+import sys
 
 import yaml
 from django.conf import settings
@@ -306,7 +307,7 @@ class Virtualenv(PythonEnvironment):
 
         requirements = [
             'mock==1.0.1',
-            'pillow==5.4.1',
+            'pillow==6.2.2' if sys.version_info < (3,) else 'pillow==9.0.1',
             'alabaster>=0.7,<0.8,!=0.7.5',
             'commonmark==0.8.1',
             'recommonmark==0.5.0',
